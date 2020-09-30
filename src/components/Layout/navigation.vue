@@ -15,6 +15,11 @@
       >
         {{ page.name }}
       </router-link>
+
+      <!-- Temporary "resume" -->
+      <a class="link t--lc" href="@/assets/clarence-resume.pdf" download
+        >resume</a
+      >
     </div>
   </div>
 
@@ -34,6 +39,11 @@
       >
         {{ page.name }}
       </router-link>
+
+      <!-- Temporary "resume" -->
+      <a class="link t--lc" href="@/assets/clarence-resume.pdf" download
+        >resume</a
+      >
     </div>
   </div>
 </template>

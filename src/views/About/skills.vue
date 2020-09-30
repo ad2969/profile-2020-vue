@@ -42,7 +42,7 @@ const SKILLS = [
       Python: 1
     },
     frameworks: [
-      ["React", "React Native", "Vue", "GatsbyJs", "NextJs"],
+      ["React", "React Native", "Vue", "Gatsby.js"],
       ["Bootstrap", "Ant", "ThreeJs", "FramerMotion"],
       ["GraphQL", "Serverless", "Aglio", "Dredd"],
       ["Mocha", "Chakram"],

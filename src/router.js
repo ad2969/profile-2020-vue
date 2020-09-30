@@ -5,19 +5,19 @@ export const pages = [
   {
     path: "/",
     name: "About"
-  },
-  {
-    path: "/portfolio",
-    name: "Portfolio"
-  },
-  {
-    path: "/projects",
-    name: "Projects"
-  },
-  {
-    path: "/contact",
-    name: "Contact"
   }
+  // {
+  //   path: "/portfolio",
+  //   name: "Portfolio"
+  // },
+  // {
+  //   path: "/projects",
+  //   name: "Projects"
+  // },
+  // {
+  //   path: "/contact",
+  //   name: "Contact"
+  // }
 ];
 
 const routes = [

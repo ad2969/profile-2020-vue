@@ -49,13 +49,27 @@ const POSITIONS = [
     // markRaw prevents it from being "reactive"
     image: markRaw(BackgroundSD)
   },
+  // {
+  //   article: "a",
+  //   title: "Product Lead",
+  //   description: [
+  //     { text: "I enjoy getting involved with all aspects of", coloured: false },
+  //     { text: "product design", coloured: true },
+  //     { text: "and seeing a product through to launch.", coloured: false }
+  //   ],
+  //   image: markRaw(BackgroundPL)
+  // }
   {
-    article: "a",
-    title: "Product Lead",
+    article: "an",
+    title: "Electrical Engineer",
     description: [
-      { text: "I enjoy getting involved with all aspects of", coloured: false },
-      { text: "product design", coloured: true },
-      { text: "and seeing a product through to launch.", coloured: false }
+      {
+        text:
+          "I enjoy tinkering with technology and understand the importance of",
+        coloured: false
+      },
+      { text: "engineering practices", coloured: true },
+      { text: "in industry.", coloured: false }
     ],
     image: markRaw(BackgroundPL)
   }
