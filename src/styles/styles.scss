@@ -6,6 +6,7 @@
 
     @include for-phone-only {
         min-height: 100vh;
+        max-height: max-content;
     }
 
 }

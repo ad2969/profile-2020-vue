@@ -14,13 +14,13 @@
       />
     </div>
     <div class="work-content">
-      <h5 class="work-title">
+      <h4 class="work-title">
         <span class="t--hl t--b">{{ currentData.title }}</span>
         &nbsp;@&nbsp;{{ currentData.company }}
-      </h5>
-      <h5 class="work-details">
+      </h4>
+      <h4 class="work-details">
         {{ currentData.date }}&nbsp;•&nbsp;{{ currentData.location }}
-      </h5>
+      </h4>
       <p class="work-description">{{ currentData.description }}</p>
       <div class="work-skills">
         <span class="tag t--c" v-for="skill in currentData.skills" :key="skill">
@@ -32,9 +32,9 @@
 </template>
 
 <script>
+import Header from "@/components/layout/header";
 import SemiosLogo from "@/assets/logos/semios.png";
 import QuestionMark from "@/assets/logos/question.png";
-import Header from "@/components/layout/header";
 
 const JOBS = {
   0: {
@@ -51,17 +51,6 @@ const JOBS = {
       "Internet of Things",
       "Cloud Services (AWS, GCP)"
     ],
-    image: SemiosLogo
-  },
-  1: {
-    index: 1,
-    company: "VIBEVENT",
-    title: "Product Lead",
-    date: "January to present",
-    location: "Vancouver, BC",
-    description: "",
-    // markRaw prevents it from being "reactive"
-    skills: ["responsive web development", "Cloud (AWS)", "product management"],
     image: SemiosLogo
   },
   999: {
@@ -99,6 +88,8 @@ export default {
 
 <style scoped lang="scss">
 .work {
+  margin-bottom: 2rem;
+
   .work-content {
     width: 90%;
     margin: 0 auto;

@@ -4,12 +4,14 @@
     <Divider />
     <AboutWork />
     <Divider />
+    <AboutSkills />
   </Layout>
 </template>
 
 <script>
 import AboutHero from "./hero";
 import AboutWork from "./work";
+import AboutSkills from "./skills";
 import Layout from "@/components/layout";
 import Divider from "@/components/layout/divider";
 
@@ -19,7 +21,8 @@ export default {
     Layout,
     Divider,
     AboutHero,
-    AboutWork
+    AboutWork,
+    AboutSkills
   },
   data() {
     return {};

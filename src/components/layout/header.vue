@@ -27,6 +27,8 @@ export default {
 
   .header-text-background {
     opacity: 0.2;
+    margin-bottom: 5rem;
+    user-select: none;
   }
   .header-text {
     position: absolute;
