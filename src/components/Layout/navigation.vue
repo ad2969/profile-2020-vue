@@ -1,0 +1,138 @@
+<template>
+  <!-- The one that stays on top -->
+  <div class="Navigation" id="Navigation">
+    <router-link to="/">
+      <img class="navlogo" src="@/assets/logo.png" alt="logo" />
+    </router-link>
+    <div class="navlinks">
+      <router-link
+        v-for="page in pages"
+        :to="page.path"
+        :key="page.name"
+        :class="
+          'link t--lc' + (page.name === currentRouteName ? ' active' : '')
+        "
+      >
+        {{ page.name }}
+      </router-link>
+    </div>
+  </div>
+
+  <!-- The one that follows as a "sticky" -->
+  <div :class="'Navigation-black' + (atTop === true ? '' : ' scrolled')">
+    <router-link to="/">
+      <img class="navlogo" src="@/assets/logo.png" alt="logo" />
+    </router-link>
+    <div class="navlinks">
+      <router-link
+        v-for="page in pages"
+        :to="page.path"
+        :key="page.name"
+        :class="
+          'link t--lc' + (page.name === currentRouteName ? ' active' : '')
+        "
+      >
+        {{ page.name }}
+      </router-link>
+    </div>
+  </div>
+</template>
+
+<script>
+import { pages } from "@/router";
+// import { convertRemToPixels } from "@/utils";
+export default {
+  name: "Navigation",
+  data() {
+    return {
+      pages: {},
+      atTop: true,
+      navPopup: false
+    };
+  },
+  mounted() {
+    this.pages = Object.assign({}, pages);
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  computed: {
+    currentRouteName() {
+      return this.$route.name;
+    }
+  },
+  methods: {
+    handleScroll() {
+      let body = document.documentElement; //IE with doctype
+      body = body.clientHeight ? body : document.body;
+      const navBarHeight = document.getElementById("Navigation").clientHeight;
+
+      if (body.scrollTop <= navBarHeight) this.atTop = true;
+      else this.atTop = false;
+    }
+  }
+};
+</script>
+
+<style scoped lang="scss">
+.Navigation,
+.Navigation-black {
+  @include flex-row;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  transition: 0.5s all;
+  z-index: 1000;
+
+  .navlogo {
+    max-height: 2rem;
+    padding: 2rem 3rem;
+    @include anim-h--scale;
+  }
+
+  .navlinks {
+    @include flex-row;
+    margin-left: auto;
+    padding: 2rem 3rem;
+
+    .link {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      text-decoration: none;
+      color: $black;
+      font-size: 1.25rem;
+      @include anim-h--scale(1.2);
+    }
+  }
+}
+
+.Navigation-black {
+  position: fixed;
+  transform: translateY(-100%);
+  transition: 0.5s all;
+  background: $black;
+
+  .navlinks {
+    .link {
+      color: $white;
+    }
+  }
+
+  &.scrolled {
+    transform: translateY(0);
+    transition: 0.5s all;
+  }
+}
+
+.Navigation,
+.Navigation.scrolled {
+  .navlinks {
+    .link {
+      &.active {
+        color: $dark;
+      }
+    }
+  }
+}
+</style>

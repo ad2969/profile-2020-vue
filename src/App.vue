@@ -1,13 +1,57 @@
 <template>
+  <Navigation />
   <router-view />
 </template>
 
+<script>
+import Navigation from "@/components/layout/navigation.vue";
+export default {
+  name: "App",
+  components: {
+    Navigation
+  }
+};
+</script>
+
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: black;
+
+  margin: 0;
+  max-width: 1800px;
+
+  @media (min-width: 1500px) {
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1500px) {
+    margin: 0 auto;
+  }
+}
+
+html {
+  font-size: 10px;
+
+  @include for-tablet-portrait-up {
+    font-size: 10px;
+  }
+
+  @include for-tablet-landscape-up {
+    font-size: 13px;
+  }
+
+  @include for-desktop-up {
+    font-size: 14px;
+  }
+
+  @include for-big-desktop-up {
+    font-size: 16px;
+  }
 }
 </style>
