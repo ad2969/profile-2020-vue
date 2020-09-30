@@ -10,42 +10,21 @@
         :to="page.path"
         :key="page.name"
         :class="
-          'link t--lc' + (page.name === currentRouteName ? ' active' : '')
+          'link t--lc t--non' +
+            (page.name === currentRouteName ? ' active' : '')
         "
       >
         {{ page.name }}
       </router-link>
 
       <!-- Temporary "resume" -->
-      <a class="link t--lc" href="@/assets/clarence-resume.pdf" download
+      <a class="link t--lc t--non" href="@/assets/clarence-resume.pdf" download
         >resume</a
       >
     </div>
   </div>
 
-  <!-- The one that follows as a "sticky" -->
-  <div :class="'Navigation-black' + (atTop === true ? '' : ' scrolled')">
-    <router-link to="/">
-      <img class="navlogo" src="@/assets/logo.png" alt="logo" />
-    </router-link>
-    <div class="navlinks">
-      <router-link
-        v-for="page in pages"
-        :to="page.path"
-        :key="page.name"
-        :class="
-          'link t--lc' + (page.name === currentRouteName ? ' active' : '')
-        "
-      >
-        {{ page.name }}
-      </router-link>
-
-      <!-- Temporary "resume" -->
-      <a class="link t--lc" href="@/assets/clarence-resume.pdf" download
-        >resume</a
-      >
-    </div>
-  </div>
+  <!-- Scroll to top button -->
 </template>
 
 <script>
@@ -86,8 +65,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.Navigation,
-.Navigation-black {
+.Navigation {
   @include flex-row;
   width: 100vw;
   left: 0;
@@ -109,35 +87,10 @@ export default {
     .link {
       padding-left: 2rem;
       padding-right: 2rem;
-      text-decoration: none;
       color: $black;
       font-size: 1.25rem;
       @include anim-h--scale(1.2);
-    }
-  }
-}
 
-.Navigation-black {
-  position: fixed;
-  transform: translateY(-100%);
-  background: rgba($black, 0.8);
-
-  .navlinks {
-    .link {
-      color: $white;
-    }
-  }
-
-  &.scrolled {
-    transform: translateY(0);
-    transition: transform 0.5s;
-  }
-}
-
-.Navigation,
-.Navigation.scrolled {
-  .navlinks {
-    .link {
       &.active {
         color: $dark;
       }

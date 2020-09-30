@@ -45,3 +45,10 @@ p {
 .t--hl {
     color: $dark;
 }
+
+
+.t--non {
+    color: inherit;
+    text-decoration: none;
+    user-select: none;
+}

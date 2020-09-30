@@ -10,7 +10,7 @@
         ></div>
         <a tag="div" :href="inv.link" target="_blank" class="inv-content">
           <img class="inv__icon" :src="inv.icon" />
-          <p class="inv__title">{{ inv.organization }}</p>
+          <p class="inv__title t--non">{{ inv.organization }}</p>
         </a>
         <!-- <div class="inv__content">
         </div> -->
@@ -75,7 +75,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, calc(50% - 2rem));
   grid-gap: 2rem;
-  max-width: 600px;
+  width: 80%;
+  // max-width: 600px;
   margin: 0 auto;
 
   @include for-tablet-portrait-up {
@@ -144,7 +145,6 @@ export default {
         line-height: 2rem;
         color: $black;
         max-width: 80%;
-        text-decoration: none;
       }
     }
 

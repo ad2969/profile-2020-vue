@@ -16,7 +16,12 @@
     <div class="work-content">
       <h4 class="work-title">
         <span class="t--hl t--b">{{ currentData.title }}</span>
-        &nbsp;@&nbsp;{{ currentData.company }}
+        <a
+          :class="'t--non ' + (currentData.link ? 'work-link' : '')"
+          :href="currentData.link"
+          target="_blank"
+          >&nbsp;@&nbsp;{{ currentData.company }}</a
+        >
       </h4>
       <h4 class="work-details">
         {{ currentData.date }}&nbsp;•&nbsp;{{ currentData.location }}
@@ -51,12 +56,13 @@ const JOBS = {
       "Internet of Things",
       "Cloud Services (AWS, GCP)"
     ],
-    image: SemiosLogo
+    image: SemiosLogo,
+    link: "https://semios.com/"
   },
   999: {
     index: 999,
     company: "My Next Workplace",
-    title: "Product Manager/Software Developer Co-op",
+    title: "Software Developer/Product Manager Co-op",
     date: "Winter/Summer 2020",
     location: "Anywhere!",
     description:
@@ -91,8 +97,14 @@ export default {
   margin-bottom: 2rem;
 
   .work-content {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
+
+    .work-title {
+      .work-link {
+        @include anim-h--opacity;
+      }
+    }
 
     @include for-phone-only {
       width: 100%;

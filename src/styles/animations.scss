@@ -8,13 +8,13 @@
     }
 }
 
-@mixin anim-h--opacity($hiddenOpacity: 0.5, $duration: 0.2s) {
+@mixin anim-h--opacity($hiddenOpacity: 0.5, $duration: 0.2s, $showOpacity: 1) {
     cursor: pointer;
     user-select: none;
     opacity: $hiddenOpacity;
     transition: opacity $duration;
     &:hover {
-        opacity: 1;
+        opacity: $showOpacity;
         transition: opacity $duration;
     }
 }

@@ -14,7 +14,7 @@
       <div class="column">
         <div class="column-title">
           <ToolsIcon class="column-title__img" />
-          <h4 class="mt-0 column-title__text">Other Skill</h4>
+          <h4 class="mt-0 column-title__text">Other Skills</h4>
         </div>
         <div class="column-content">
           <SkillList :skills="skills[1]" />
@@ -43,7 +43,7 @@ const SKILLS = [
     },
     frameworks: [
       ["React", "React Native", "Vue", "Gatsby.js"],
-      ["Bootstrap", "Ant", "ThreeJs", "FramerMotion"],
+      ["AntDesign", "Bootstrap", "MaterialUI", "ThreeJs", "FramerMotion"],
       ["GraphQL", "Serverless", "Aglio", "Dredd"],
       ["Mocha", "Chakram"],
       ["Django"]
@@ -93,6 +93,8 @@ export default {
 
 <style scoped lang="scss">
 .table {
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   border: 1px solid rgba($dark, 0.5);
   border-radius: 1rem 1rem 0 0;
