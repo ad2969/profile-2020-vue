@@ -16,7 +16,7 @@ import AboutHero from "./hero";
 import AboutWork from "./work";
 import AboutSkills from "./skills";
 import AboutInvolvements from "./involvements";
-import Layout from "@/components/layout";
+import Layout from "@/components/layout/index";
 import Divider from "@/components/layout/divider";
 
 export default {
