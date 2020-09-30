@@ -5,7 +5,7 @@
       <div class="column">
         <div class="column-title">
           <DevIcon class="column-title__img" />
-          <h4 class="mt-0">Web and Mobile Development</h4>
+          <h4 class="mt-0 column-title__text">Web and Mobile Development</h4>
         </div>
         <div class="column-content">
           <SkillList :skills="skills[0]" />
@@ -14,13 +14,14 @@
       <div class="column">
         <div class="column-title">
           <ToolsIcon class="column-title__img" />
-          <h4 class="mt-0">Other Skill</h4>
+          <h4 class="mt-0 column-title__text">Other Skill</h4>
         </div>
         <div class="column-content">
           <SkillList :skills="skills[1]" />
         </div>
       </div>
     </div>
+    <p>⦿ - years of experience</p>
   </div>
 </template>
 
@@ -107,7 +108,7 @@ export default {
         max-width: 3rem;
       }
 
-      h4 {
+      .column-title__text {
         color: $white;
       }
     }

@@ -5,7 +5,7 @@
       :key="'category' + index"
       class="skill-list"
     >
-      <h4 class="t--c t--hl t--b mb-0">my favourite {{ category }}:</h4>
+      <h4 class="t--c t--hl mb-0">my favourite {{ category }}:</h4>
 
       <!-- If language -->
       <div v-if="category === 'languages'">
@@ -35,9 +35,6 @@ export default {
     skills: {
       type: Object
     }
-  },
-  created() {
-    console.log(this.skills);
   }
 };
 </script>
@@ -45,7 +42,6 @@ export default {
 <style scoped lang="scss">
 .skill-list {
   margin: 2rem;
-  margin-bottom: 5rem;
 }
 
 .skill-list__line {

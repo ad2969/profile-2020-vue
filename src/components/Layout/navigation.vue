@@ -82,7 +82,7 @@ export default {
   width: 100vw;
   left: 0;
   top: 0;
-  transition: 0.5s all;
+  transition: transform 0.5s;
   z-index: 1000;
 
   .navlogo {
@@ -110,8 +110,7 @@ export default {
 .Navigation-black {
   position: fixed;
   transform: translateY(-100%);
-  transition: 0.5s all;
-  background: $black;
+  background: rgba($black, 0.8);
 
   .navlinks {
     .link {
@@ -121,7 +120,7 @@ export default {
 
   &.scrolled {
     transform: translateY(0);
-    transition: 0.5s all;
+    transition: transform 0.5s;
   }
 }
 

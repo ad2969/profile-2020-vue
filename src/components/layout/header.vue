@@ -1,6 +1,11 @@
 <template>
   <div class="header-text">
-    <h1 class="header-text-background t--uc t--b t--hl">{{ bgText }}</h1>
+    <h1
+      class="header-text-background t--uc t--b t--hl"
+      :id="`headertext-${bgText}`"
+    >
+      {{ bgText }}
+    </h1>
     <h3 class="header-text t--c">{{ text }}</h3>
   </div>
 </template>
@@ -18,6 +23,12 @@ export default {
       required: true
     }
   }
+  // mounted: function() {
+  //   const h = document.getElementById(`headertext-${this.bgText}`).clientWidth;
+  //   const fontsize = h / this.bgText.length;
+  //   if (fontsize) this.relativeFontSize = fontsize;
+  //   console.log(this.bgText, fontsize);
+  // }
 };
 </script>
 
@@ -26,8 +37,10 @@ export default {
   position: relative;
 
   .header-text-background {
+    max-width: 100%;
     opacity: 0.2;
-    margin-bottom: 5rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
     user-select: none;
   }
   .header-text {
@@ -35,7 +48,14 @@ export default {
     text-align: center;
     width: 100%;
     margin: 0;
-    top: 3rem;
+    top: 4rem;
+    line-height: 3rem;
+  }
+
+  @include for-phone-only {
+    .header-text-background {
+      margin-bottom: 4rem;
+    }
   }
 }
 </style>

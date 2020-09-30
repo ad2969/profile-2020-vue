@@ -94,13 +94,12 @@ export default {
 .hero {
   @include flex-row;
 
+  &.Page {
+    min-height: 600px;
+  }
+
   .hero-text {
     text-align: left;
-    flex: 55%;
-
-    .hero-text__title {
-      min-height: 10rem;
-    }
   }
 
   .hero-img {
@@ -108,7 +107,9 @@ export default {
 
     .hero-img__bg,
     .hero-img__me {
-      max-height: 25rem;
+      max-height: 30rem;
+      width: 100%;
+      height: 100%;
       @include anim-h--scale;
     }
     .hero-img__bg {
@@ -128,6 +129,21 @@ export default {
     }
   }
 
+  @include for-tablet-portrait-up {
+    .hero-text {
+      flex: 50%;
+      max-width: 45%;
+      padding-right: 5%;
+    }
+
+    .hero-img {
+      flex: 50%;
+      max-width: 50%;
+      position: relative;
+      margin-left: 10%;
+    }
+  }
+
   @include for-phone-only {
     display: unset;
 
@@ -137,6 +153,7 @@ export default {
     }
     .hero-text {
       flex: unset;
+      margin-top: 5rem;
     }
   }
 }

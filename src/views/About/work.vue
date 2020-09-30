@@ -55,7 +55,7 @@ const JOBS = {
   },
   999: {
     index: 999,
-    company: "My next company",
+    company: "My Next Workplace",
     title: "Product Manager/Software Developer Co-op",
     date: "Winter/Summer 2020",
     location: "Anywhere!",
@@ -112,21 +112,26 @@ export default {
     @include for-phone-only {
       margin-left: 0;
     }
+
+    .tag:hover {
+      background: rgba($medium, 0.8);
+      transition: 0.2s all;
+    }
   }
 
   .work-timeline {
     @include flex-row;
     justify-content: space-between;
-    padding: 0 0 3rem 0;
+    padding: 0 0 1rem 0;
     position: relative;
     width: 100%;
 
     .work-img {
-      max-height: 5rem;
-      max-width: 5rem;
-      width: 5rem;
+      max-height: 3rem;
+      max-width: 3rem;
+      width: 3rem;
       object-fit: scale-down;
-      padding: 0.5rem;
+      padding: 1rem;
       margin: 0.5rem;
       border-radius: 50%;
       background: $white;

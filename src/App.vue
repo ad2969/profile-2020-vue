@@ -17,27 +17,28 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 html {
-  font-size: 10px;
+  font-size: 9px;
 
   @include for-tablet-portrait-up {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   @include for-tablet-landscape-up {
-    font-size: 13px;
+    font-size: 10px;
   }
 
   @include for-desktop-up {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   @include for-big-desktop-up {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
 body {
   margin: 0;
+  // overflow-x: hidden;
 }
 
 #app {
