@@ -1,0 +1,20 @@
+@mixin anim-h--scale($scale: 1.1, $duration: 0.2s) {
+    cursor: pointer;
+    user-select: none;
+    transition: $duration all;
+    &:hover {
+        transform: scale($scale);
+        transition: $duration all;
+    }
+}
+
+@mixin anim-h--opacity($hiddenOpacity: 0.5, $duration: 0.2s) {
+    cursor: pointer;
+    user-select: none;
+    opacity: $hiddenOpacity;
+    transition: $duration all;
+    &:hover {
+        opacity: 1;
+        transition: $duration all;
+    }
+}

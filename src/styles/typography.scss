@@ -1,11 +1,45 @@
+@import "./variables.scss";
+
+// OVERWRITES
+h1, h2, h3, h4, h5 {
+    font-weight: normal;
+}
+h1 {
+    font-size: 5rem;
+}
+h2 {
+    font-size: 4rem;
+}
+h3 {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+h5 {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+p {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+}
+
+// classes
 .t--c {
     text-transform: capitalize;
 }
-
 .t--uc {
     text-transform: uppercase;
 }
-
 .t--lc {
     text-transform: lowercase;
+}
+
+.t--b {
+    font-weight: bold;
+}
+
+.t--hl {
+    color: $dark;
 }
