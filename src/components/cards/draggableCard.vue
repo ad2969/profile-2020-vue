@@ -50,6 +50,7 @@ export default {
       cardPosition: {
         x: 0,
         y: 0,
+        z: 0,
         rotation: 0
       }
     };
@@ -59,8 +60,8 @@ export default {
       return `linear-gradient(180deg, ${this.bgColor1} 0%, ${this.bgColor2} 100%)`;
     },
     cardStyle() {
-      const { x, y, rotation } = this.cardPosition;
-      return `translate3D(${x}px, ${y}px, 0) rotate(${rotation}deg)`;
+      const { x, y, z, rotation } = this.cardPosition;
+      return `translate3D(${x}px, ${y}px, ${z}px) rotate(${rotation}deg)`;
     },
     isCurrentCard() {
       return this.current;
@@ -135,9 +136,12 @@ export default {
   methods: {
     removeCard(horizontal = LEFT, vertical = DOWN) {
       this.shouldCardAnimate = false;
-      this.shouldCardDisappear = true;
+      this.shouldCardDisappear = TextTrackCueList;
+
+      // save this card remove direction
       this.$emit("card-remove", { horizontal, vertical });
 
+      // determine x coordinates to move to
       let removeX = 0;
       let removeRotation = 0;
       if (horizontal && horizontal === LEFT) {
@@ -148,32 +152,31 @@ export default {
         removeRotation = MAX_ROTATION;
       }
 
+      // determine y coordinates to move to
       let removeY = 0;
       if (vertical && vertical === DOWN) removeY = -this.Y_HIDDEN;
       else if (vertical && vertical === UP) removeY = this.Y_HIDDEN;
 
+      // move to the position
       this.setCardPosition(removeX, removeY, removeRotation);
       this.shouldCardAnimate = false;
 
       // change title content
       this.$emit("change-content");
       // add a delay before resetting the card
-      setTimeout(async () => {
+      setTimeout(() => {
         this.$emit("swipe-complete");
         this.resetCardPosition();
         this.shouldCardAnimate = true;
         this.shouldCardDisappear = false;
       }, REMOVE_CARD_TIME);
     },
-    setCardPosition(x = 0, y = 0, rotation = 0) {
-      this.cardPosition = { x, y, rotation };
+    setCardPosition(x = 0, y = 0, rotation = 0, z = 0) {
+      this.cardPosition = { x, y, z, rotation };
     },
-    async resetCardPosition() {
-      this.cardPosition = { x: 0, y: 0, rotation: 0 };
+    resetCardPosition() {
+      this.cardPosition = { x: 0, y: 0, z: 0, rotation: 0 };
     }
-  },
-  watch: {
-    async isCurrentCard() {}
   }
 };
 </script>
