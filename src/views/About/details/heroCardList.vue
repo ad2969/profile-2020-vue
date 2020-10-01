@@ -4,19 +4,19 @@
       v-for="i in images"
       :key="i.title"
       :image="i.image"
-      :bgColor1="i.bgColor1 || '#D3E3FC'"
-      :bgColor2="i.bgColor2 || '#D3E3FC'"
+      :bgColor1="i.bgColor1"
+      :bgColor2="i.bgColor2"
       :current="i.title === currentTitleToUse"
+      :lastRemoveDirection="lastRemoveDirection"
       @swipe-complete="handleCardSwiped"
       @change-content="handleChangeContent"
+      @card-remove="handleCardRemove"
     />
     <div class="image-indicators">
       <span
         v-for="i in originalTitleOrder"
         :key="i + 'indicator'"
-        :class="{
-          active: i === currentTitle
-        }"
+        :class="{ active: i === currentTitle }"
         class="indicator"
         :style="{
           width: `${100 / (originalTitleOrder.length + 1)}%`,
@@ -35,6 +35,10 @@
 <script>
 import { REMOVE_CARD_TIME } from "@/utils/constants";
 import DraggableCard from "@/components/cards/draggableCard";
+import { UP, DOWN } from "@/utils/constants";
+
+const VERTICAL_OPTIONS = [UP, DOWN];
+
 export default {
   name: "HeroCardList",
   components: {
@@ -42,7 +46,11 @@ export default {
   },
   data() {
     return {
-      currentTitleToUse: this.currentTitle
+      currentTitleToUse: this.currentTitle,
+      lastRemoveDirection: {
+        horizontal: "",
+        vertical: ""
+      }
     };
   },
   props: {
@@ -65,6 +73,11 @@ export default {
     },
     handleChangeContent() {
       this.$emit("change-content");
+    },
+    handleCardRemove({ horizontal }) {
+      this.lastRemoveDirection.horizontal = horizontal;
+      this.lastRemoveDirection.vertical =
+        VERTICAL_OPTIONS[Math.floor(Math.random() * 2)];
     }
   },
   watch: {

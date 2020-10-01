@@ -5,11 +5,11 @@
       <h2 class="hero-text__title mt-0 t--uc">
         {{ currentData.title }}
       </h2>
-      <h3>
+      <h3 class="hero-text__description">
         <span
           v-for="(t, index) in currentData.description"
           :key="'desc' + index"
-          :class="t.coloured ? 't--hl' : ''"
+          :class="{ 't--hl': t.coloured }"
         >
           {{ t.text }}&nbsp;
         </span>
@@ -116,6 +116,10 @@ export default {
 
   .hero-text {
     text-align: left;
+
+    .hero-text__description {
+      min-height: 14rem;
+    }
   }
 
   .hero-img {

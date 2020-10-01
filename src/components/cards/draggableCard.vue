@@ -15,19 +15,33 @@
 
 <script>
 import interact from "interactjs";
-import { REMOVE_CARD_TIME } from "@/utils/constants";
+import { LEFT, RIGHT, UP, DOWN, REMOVE_CARD_TIME } from "@/utils/constants";
 
 const MAX_ROTATION = 30;
-const X_HIDDEN = window.innerWidth;
-const Y_HIDDEN = window.innerHeight;
-let X_THRESHOLD = window.innerWidth > window.innerHeight ? 300 : 150;
-if (X_THRESHOLD > window.innerWidth) X_THRESHOLD = window.innerWidth / 5;
-let Y_THRESHOLD = window.innerWidth < window.innerHeight ? 300 : 150;
-if (Y_THRESHOLD > window.innerHeight) Y_THRESHOLD = window.innerHeight / 3;
 
 export default {
   name: "DraggableCard",
-  props: ["image", "bgColor1", "bgColor2", "current"],
+  props: {
+    image: {
+      required: true
+    },
+    bgColor1: {
+      type: String,
+      default: "#D3E3FC"
+    },
+    bgColor2: {
+      type: String,
+      default: "#D3E3FC"
+    },
+    current: {
+      type: Boolean,
+      required: true
+    },
+    lastRemoveDirection: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       isShowing: true,
@@ -50,6 +64,22 @@ export default {
     },
     isCurrentCard() {
       return this.current;
+    },
+    X_HIDDEN: () => {
+      return window.innerWidth;
+    },
+    Y_HIDDEN: () => {
+      return window.innerHeight;
+    },
+    X_THRESHOLD: () => {
+      let xt = window.innerWidth > window.innerHeight ? 300 : 150;
+      if (xt > window.innerWidth) xt = window.innerWidth / 5;
+      return xt;
+    },
+    Y_THRESHOLD: () => {
+      let yt = window.innerWidth < window.innerHeight ? 300 : 150;
+      if (yt > window.innerHeight) yt = window.innerHeight / 3;
+      return yt;
     }
   },
   mounted() {
@@ -64,7 +94,7 @@ export default {
         const newX = this.cardPosition.x + e.dx;
         const newY = this.cardPosition.y + e.dy;
 
-        let newRotation = MAX_ROTATION * (newX / X_THRESHOLD);
+        let newRotation = MAX_ROTATION * (newX / this.X_THRESHOLD);
 
         if (newRotation > MAX_ROTATION) newRotation = MAX_ROTATION;
         else if (newRotation < -MAX_ROTATION) newRotation = -MAX_ROTATION;
@@ -77,42 +107,51 @@ export default {
         let verticalDirection = "";
         let horizontalDirection = "";
 
-        if (this.cardPosition.x > X_THRESHOLD) horizontalDirection = "RIGHT";
-        else if (this.cardPosition.x < -X_THRESHOLD)
-          horizontalDirection = "LEFT";
+        if (this.cardPosition.x > this.X_THRESHOLD) horizontalDirection = RIGHT;
+        else if (this.cardPosition.x < -this.X_THRESHOLD)
+          horizontalDirection = LEFT;
 
-        if (this.cardPosition.y > Y_THRESHOLD) verticalDirection = "UP";
-        else if (this.cardPosition.y < -Y_THRESHOLD) verticalDirection = "DOWN";
+        if (this.cardPosition.y > this.Y_THRESHOLD) verticalDirection = UP;
+        else if (this.cardPosition.y < -this.Y_THRESHOLD)
+          verticalDirection = DOWN;
 
         if (verticalDirection || horizontalDirection) {
-          this.removeCard(verticalDirection, horizontalDirection);
+          this.removeCard(horizontalDirection, verticalDirection);
         } else this.resetCardPosition();
       }
+    });
+
+    interact(el).on("tap", () => {
+      if (!this.isCurrentCard) return;
+      const newHorizontal =
+        this.lastRemoveDirection.horizontal === LEFT ? RIGHT : LEFT;
+      const newVertical = this.lastRemoveDirection.vertical === UP ? DOWN : UP;
+      this.removeCard(newHorizontal, newVertical);
     });
   },
   beforeUnmount() {
     interact(this.$refs.card).unset();
   },
   methods: {
-    removeCard(vertical = "LEFT", horizontal = "DOWN") {
+    removeCard(horizontal = LEFT, vertical = DOWN) {
       this.shouldCardAnimate = false;
       this.shouldCardDisappear = true;
+      this.$emit("card-remove", { horizontal, vertical });
 
       let removeX = 0;
       let removeRotation = 0;
-      if (horizontal && horizontal === "LEFT") {
-        removeX = -X_HIDDEN;
+      if (horizontal && horizontal === LEFT) {
+        removeX = -this.X_HIDDEN;
         removeRotation = -MAX_ROTATION;
-      } else if (horizontal && horizontal === "RIGHT") {
-        removeX = X_HIDDEN;
+      } else if (horizontal && horizontal === RIGHT) {
+        removeX = this.X_HIDDEN;
         removeRotation = MAX_ROTATION;
       }
 
       let removeY = 0;
-      if (vertical && vertical === "DOWN") removeY = -Y_HIDDEN;
-      else if (vertical && vertical === "UP") removeY = Y_HIDDEN;
+      if (vertical && vertical === DOWN) removeY = -this.Y_HIDDEN;
+      else if (vertical && vertical === UP) removeY = this.Y_HIDDEN;
 
-      console.log("removing to", removeX, removeY, removeRotation);
       this.setCardPosition(removeX, removeY, removeRotation);
       this.shouldCardAnimate = false;
 

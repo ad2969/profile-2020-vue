@@ -9,10 +9,8 @@
         v-for="page in pages"
         :to="page.path"
         :key="page.name"
-        :class="
-          'link t--lc t--non' +
-            (page.name === currentRouteName ? ' active' : '')
-        "
+        :class="{ active: page.name === currentRouteName }"
+        class="link t--lc t--non"
       >
         {{ page.name }}
       </router-link>

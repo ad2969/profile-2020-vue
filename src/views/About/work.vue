@@ -6,9 +6,8 @@
         v-for="job in jobs"
         :key="'work-img-' + job.index"
         :id="job.index + ' ' + currentData.index"
-        :class="
-          job.index === currentData.index ? 'work-img active' : 'work-img'
-        "
+        :class="{ active: job.index === currentData.index }"
+        class="work-img"
         :src="job.image"
         @click="changeJob(job.index)"
       />
@@ -17,7 +16,8 @@
       <h4 class="work-title">
         <span class="t--hl t--b">{{ currentData.title }}</span>
         <a
-          :class="'t--non ' + (currentData.link ? 'work-link' : '')"
+          :class="{ 'work-link': currentData.link }"
+          class="t--non"
           :href="currentData.link"
           target="_blank"
           >&nbsp;@&nbsp;{{ currentData.company }}</a
