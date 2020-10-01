@@ -93,7 +93,6 @@ export default {
 
 <style scoped lang="scss">
 .table {
-  width: 80%;
   margin: 0 auto;
   display: flex;
   border: 1px solid rgba($dark, 0.5);
@@ -118,6 +117,7 @@ export default {
 
   @include for-tablet-landscape-up {
     flex-direction: row;
+    width: 80%;
 
     .column {
       flex: 50%;

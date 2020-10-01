@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 @mixin anim-h--scale($scale: 1.1, $duration: 0.2s) {
     cursor: pointer;
     user-select: none;
@@ -16,5 +18,37 @@
     &:hover {
         opacity: $showOpacity;
         transition: opacity $duration;
+    }
+}
+
+@mixin box-shadow-glow($color: $dark, $duration: 1s) {
+    animation-duration: $duration;
+    animation-name: glow;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+
+    @keyframes glow {
+        from {
+            box-shadow: 0 0 2rem 1rem rgba($color, 0.2);
+        }
+        to {
+            box-shadow: 0 0 2.5rem 1.25rem rgba($color, 0.3);
+        }
+    }
+}
+
+@mixin text-shadow-glow($color: $dark, $duration: 1s, $size: 5rem) {
+    animation-duration: $duration;
+    animation-name: text-glow;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+
+    @keyframes text-glow {
+        from {
+            text-shadow: 0 0 $size rgba($color, 1);
+        }
+        to {
+            text-shadow: 0 0 calc($size * 1.25) rgba($color, 1);
+        }
     }
 }

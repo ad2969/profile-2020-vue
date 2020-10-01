@@ -15,27 +15,21 @@
         </span>
       </h3>
     </div>
-    <div class="hero-img">
-      <Background class="hero-img__bg" />
-      <component
-        :is="currentData.image"
-        class="hero-img__me"
-        @click="changeHero('forward')"
-      ></component>
-      <div class="hero-img__arrows">
-        <Arrow class="arrow" @click="changeHero('forward')" />
-        <Arrow class="arrow" direction="right" @click="changeHero('back')" />
-      </div>
-    </div>
+    <HeroCardList
+      class="hero-img"
+      :images="positions.map(p => ({ ...p.image, title: p.title }))"
+      :currentTitle="currentData.title"
+      @swipe-complete="handleCardSwiped"
+      @change-content="handleChangeContent"
+    />
   </div>
 </template>
 
 <script>
-import { markRaw } from "vue";
-import Background from "@/assets/face-bg";
-import BackgroundSD from "@/assets/face-sd";
-import BackgroundPL from "@/assets/face-pl";
-import Arrow from "@/assets/arrow";
+import HeroCardList from "./details/heroCardList";
+import FaceSW from "@/assets/face-sw.png";
+import FaceEE from "@/assets/face-ee.png";
+import FacePL from "@/assets/face-pl.png";
 
 const POSITIONS = [
   {
@@ -47,18 +41,22 @@ const POSITIONS = [
       { text: "on the people around me.", coloured: false }
     ],
     // markRaw prevents it from being "reactive"
-    image: markRaw(BackgroundSD)
+    image: {
+      image: FaceSW,
+      bgColor1: "#FFCCBB",
+      bgColor2: "#FFCCBB"
+    }
   },
-  // {
-  //   article: "a",
-  //   title: "Product Lead",
-  //   description: [
-  //     { text: "I enjoy getting involved with all aspects of", coloured: false },
-  //     { text: "product design", coloured: true },
-  //     { text: "and seeing a product through to launch.", coloured: false }
-  //   ],
-  //   image: markRaw(BackgroundPL)
-  // }
+  {
+    article: "a",
+    title: "Product Lead",
+    description: [
+      { text: "I enjoy getting involved with all aspects of", coloured: false },
+      { text: "product design", coloured: true },
+      { text: "and seeing a product through to launch.", coloured: false }
+    ],
+    image: { image: FacePL }
+  },
   {
     article: "an",
     title: "Electrical Engineer",
@@ -71,34 +69,32 @@ const POSITIONS = [
       { text: "engineering practices", coloured: true },
       { text: "in industry.", coloured: false }
     ],
-    image: markRaw(BackgroundPL)
+    image: {
+      image: FaceEE,
+      bgColor1: "#D3E3FC",
+      bgColor2: "#77A6F6"
+    }
   }
 ];
 
 export default {
   name: "AboutHero",
   components: {
-    Background,
-    Arrow
+    HeroCardList
   },
   data() {
     return {
-      heroIndex: 0,
+      positions: POSITIONS,
       currentData: POSITIONS[0]
     };
   },
   methods: {
-    changeHero(type) {
-      let newHeroIndex = 0;
-      if (type === "back") {
-        newHeroIndex = this.heroIndex - 1;
-        if (newHeroIndex < 0) newHeroIndex += POSITIONS.length;
-      } else if (type === "forward") {
-        newHeroIndex = this.heroIndex + 1;
-        if (newHeroIndex >= POSITIONS.length) newHeroIndex -= POSITIONS.length;
-      }
-      this.heroIndex = newHeroIndex;
-      this.currentData = POSITIONS[newHeroIndex];
+    handleCardSwiped() {
+      const removedPosition = this.positions.shift();
+      this.positions.push(removedPosition);
+    },
+    handleChangeContent() {
+      this.currentData = { ...this.positions[1] };
     }
   }
 };
@@ -117,29 +113,17 @@ export default {
   }
 
   .hero-img {
+    position: relative;
     margin-left: 2rem;
+    @include flex-row;
+    align-items: center;
+    justify-content: center;
+    @include box-shadow-glow($dark);
 
-    .hero-img__bg,
-    .hero-img__me {
-      max-height: 30rem;
-      width: 100%;
-      height: 100%;
-      @include anim-h--scale;
-    }
-    .hero-img__bg {
-      position: absolute;
-      transform: translate(-2rem, -2rem);
-      z-index: -1;
-    }
-    .hero-img__arrows {
-      display: flex;
-      justify-content: space-evenly;
-      margin-top: 2rem;
-
-      .arrow {
-        @include anim-h--opacity(0.2);
-        max-width: 40%;
-      }
+    &:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
     }
   }
 
@@ -154,7 +138,7 @@ export default {
       flex: 50%;
       max-width: 50%;
       position: relative;
-      margin-left: 10%;
+      margin: 10% 0 10% 10%;
     }
   }
 
@@ -164,6 +148,7 @@ export default {
     .hero-img {
       @include flex-col;
       margin-top: 5rem;
+      margin-left: 0;
     }
     .hero-text {
       flex: unset;

@@ -152,7 +152,7 @@ export default {
       box-shadow: 0 0 1rem 0.5rem rgba($black, 0.1);
 
       &.active {
-        box-shadow: 0 0 2rem 1rem rgba($dark, 0.2);
+        box-shadow: 0 0 1em 0.5rem rgba($dark, 0.2);
       }
     }
 

@@ -23,12 +23,6 @@ export default {
       required: true
     }
   }
-  // mounted: function() {
-  //   const h = document.getElementById(`headertext-${this.bgText}`).clientWidth;
-  //   const fontsize = h / this.bgText.length;
-  //   if (fontsize) this.relativeFontSize = fontsize;
-  //   console.log(this.bgText, fontsize);
-  // }
 };
 </script>
 
@@ -42,6 +36,7 @@ export default {
     margin-top: 0;
     margin-bottom: 2rem;
     user-select: none;
+    @include text-shadow-glow($dark, 2s);
   }
   .header-text {
     position: absolute;

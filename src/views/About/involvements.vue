@@ -75,11 +75,11 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, calc(50% - 2rem));
   grid-gap: 2rem;
-  width: 80%;
   // max-width: 600px;
   margin: 0 auto;
 
   @include for-tablet-portrait-up {
+    width: 80%;
     grid-template-columns: repeat(auto-fill, calc(50% - 2rem));
   }
 
@@ -145,6 +145,7 @@ export default {
         line-height: 2rem;
         color: $black;
         max-width: 80%;
+        margin: 0.5em 0 0 0;
       }
     }
 

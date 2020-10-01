@@ -74,7 +74,7 @@ export default {
   z-index: 1000;
 
   .navlogo {
-    max-height: 2rem;
+    max-height: 2.5rem;
     padding: 2rem 3rem;
     @include anim-h--scale;
   }
@@ -89,6 +89,7 @@ export default {
       padding-right: 2rem;
       color: $black;
       font-size: 1.25rem;
+      font-size: 1.5em;
       @include anim-h--scale(1.2);
 
       &.active {
