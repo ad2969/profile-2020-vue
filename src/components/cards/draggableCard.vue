@@ -52,7 +52,9 @@ export default {
         y: 0,
         z: 0,
         rotation: 0
-      }
+      },
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
     };
   },
   computed: {
@@ -66,26 +68,31 @@ export default {
     isCurrentCard() {
       return this.current;
     },
-    X_HIDDEN: () => {
-      return window.innerWidth;
+    X_HIDDEN() {
+      return this.windowWidth;
     },
-    Y_HIDDEN: () => {
-      return window.innerHeight;
+    Y_HIDDEN() {
+      return this.windowHeight;
     },
-    X_THRESHOLD: () => {
-      let xt = window.innerWidth > window.innerHeight ? 300 : 150;
-      if (xt > window.innerWidth) xt = window.innerWidth / 5;
+    X_THRESHOLD() {
+      let xt = this.windowWidth > this.windowHeight ? 300 : 150;
+      if (xt > this.windowWidth) xt = this.windowWidth / 5;
       return xt;
     },
-    Y_THRESHOLD: () => {
-      let yt = window.innerWidth < window.innerHeight ? 300 : 150;
-      if (yt > window.innerHeight) yt = window.innerHeight / 3;
+    Y_THRESHOLD() {
+      let yt = this.windowWidth < this.windowHeight ? 300 : 150;
+      if (yt > this.windowHeight) yt = this.windowHeight / 3;
       return yt;
     }
   },
   mounted() {
+    // listen to window size
+    window.addEventListener("resize", this.changeWindowData);
+
+    // get the card by ref
     const el = this.$refs.card;
 
+    // interact,js listeners
     interact(el).draggable({
       onstart: () => {
         this.shouldCardAnimate = false;
@@ -176,6 +183,10 @@ export default {
     },
     resetCardPosition() {
       this.cardPosition = { x: 0, y: 0, z: 0, rotation: 0 };
+    },
+    changeWindowData() {
+      this.windowWidth = window.innerWidth;
+      this.windowHeight = window.innerHeight;
     }
   }
 };
