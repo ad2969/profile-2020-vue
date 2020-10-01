@@ -1,24 +1,28 @@
 # profile
+@ad2969's Personal Website
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Available Scripts
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### ```npm run serve```
+Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The pages are set to auto-reload on edit, and will log out any errors in the console.
 
-### Lints and fixes files
-```
-npm run lint
-```
+### ```npm run build```
+Builds the app for production to the `build` folder.
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Customize configuration
+### ```npm run lint```
+Runs linter and automatically fixes all lint problems.
+
+
+## Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Built With
+
+* [Vue3](https://v3.vuejs.org/) - Javascript Framework
+* [Vue Router](https://router.vuejs.org/) - Official Vue Router
+* [Sass](https://sass-lang.com/) - CSS Extension Language
+* [InteractJs](https://interactjs.io/) - Javascript Drag & Drop Library
