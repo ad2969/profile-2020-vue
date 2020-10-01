@@ -1,14 +1,17 @@
 <template>
   <Navigation />
   <router-view />
+  <Footer />
 </template>
 
 <script>
 import Navigation from "@/components/layout/navigation";
+import Footer from "@/components/layout/footer";
 export default {
   name: "App",
   components: {
-    Navigation
+    Navigation,
+    Footer
   }
 };
 </script>
@@ -49,7 +52,7 @@ body {
   color: black;
 
   margin: 0;
-  max-width: 1800px;
+  max-width: 2500px;
 
   @media (min-width: 1500px) {
     margin: 0 auto;

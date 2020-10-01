@@ -67,10 +67,9 @@ export default {
 <style scoped lang="scss">
 .Navigation {
   @include flex-row;
-  width: 100vw;
+  width: 100%;
   left: 0;
   top: 0;
-  transition: transform 0.5s;
   z-index: 1000;
 
   .navlogo {
@@ -90,6 +89,7 @@ export default {
       color: $black;
       font-size: 1.25rem;
       font-size: 1.5em;
+      outline: none;
       @include anim-h--scale(1.2);
 
       &.active {

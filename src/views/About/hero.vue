@@ -19,6 +19,7 @@
       class="hero-img"
       :images="positions.map(p => ({ ...p.image, title: p.title }))"
       :currentTitle="currentData.title"
+      :originalTitleOrder="originalTitleOrder"
       @swipe-complete="handleCardSwiped"
       @change-content="handleChangeContent"
     />
@@ -43,7 +44,7 @@ const POSITIONS = [
     // markRaw prevents it from being "reactive"
     image: {
       image: FaceSW,
-      bgColor1: "#FFCCBB",
+      bgColor1: "#FFF2EE",
       bgColor2: "#FFCCBB"
     }
   },
@@ -55,7 +56,11 @@ const POSITIONS = [
       { text: "product design", coloured: true },
       { text: "and seeing a product through to launch.", coloured: false }
     ],
-    image: { image: FacePL }
+    image: {
+      image: FacePL,
+      bgColor1: "#E5FFFF",
+      bgColor2: "#00887A"
+    }
   },
   {
     article: "an",
@@ -84,6 +89,7 @@ export default {
   },
   data() {
     return {
+      originalTitleOrder: POSITIONS.map(p => p.title),
       positions: POSITIONS,
       currentData: POSITIONS[0]
     };

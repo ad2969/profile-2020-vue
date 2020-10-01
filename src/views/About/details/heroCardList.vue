@@ -10,6 +10,25 @@
       @swipe-complete="handleCardSwiped"
       @change-content="handleChangeContent"
     />
+    <div class="image-indicators">
+      <span
+        v-for="i in originalTitleOrder"
+        :key="i + 'indicator'"
+        :class="{
+          active: i === currentTitle
+        }"
+        class="indicator"
+        :style="{
+          width: `${100 / (originalTitleOrder.length + 1)}%`,
+          marginLeft: `${(100 / originalTitleOrder.length + 1) /
+            originalTitleOrder.length /
+            2}%`,
+          marginRight: `${(100 / originalTitleOrder.length + 1) /
+            originalTitleOrder.length /
+            2}%`
+        }"
+      ></span>
+    </div>
   </div>
 </template>
 
@@ -34,6 +53,10 @@ export default {
     currentTitle: {
       type: String,
       required: true
+    },
+    originalTitleOrder: {
+      type: Array,
+      required: true
     }
   },
   methods: {
@@ -54,3 +77,30 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+.image-indicators {
+  @include flex-row;
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  justify-content: space-between;
+
+  .indicator {
+    height: 1em;
+    margin-bottom: 5%;
+    border-radius: 1px;
+    border: 1px solid rgba($dark, 0.1);
+    background-color: none;
+    transition: background-color 0.5s;
+
+    &.active {
+      height: 0.5em;
+      border: none;
+      background-color: rgba($dark, 0.2);
+      box-shadow: 0 0 0.5rem 0.25rem rgba($dark, 0.05);
+      transition: background-color 0.5s;
+    }
+  }
+}
+</style>

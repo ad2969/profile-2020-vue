@@ -21,7 +21,7 @@ const MAX_ROTATION = 30;
 const X_HIDDEN = window.innerWidth;
 const Y_HIDDEN = window.innerHeight;
 let X_THRESHOLD = window.innerWidth > window.innerHeight ? 300 : 150;
-if (X_THRESHOLD > window.innerWidth) X_THRESHOLD = window.innerWidth / 3;
+if (X_THRESHOLD > window.innerWidth) X_THRESHOLD = window.innerWidth / 5;
 let Y_THRESHOLD = window.innerWidth < window.innerHeight ? 300 : 150;
 if (Y_THRESHOLD > window.innerHeight) Y_THRESHOLD = window.innerHeight / 3;
 
