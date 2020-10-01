@@ -49,8 +49,8 @@ const POSITIONS = [
     }
   },
   {
-    article: "an",
-    title: "Aspiring Entrepreneur",
+    article: "a",
+    title: "Product Lead",
     description: [
       { text: "I enjoy getting involved with all aspects of", coloured: false },
       { text: "product design", coloured: true },
