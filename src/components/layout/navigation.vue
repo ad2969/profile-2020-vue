@@ -2,7 +2,7 @@
   <!-- The one that stays on top -->
   <div class="Navigation" id="Navigation">
     <router-link to="/">
-      <img class="navlogo" src="@/assets/logo.png" alt="logo" />
+      <PersonalLogo class="navlogo" />
     </router-link>
     <div class="navlinks">
       <router-link
@@ -30,9 +30,11 @@
 
 <script>
 import { pages } from "@/router";
+import PersonalLogo from "@/assets/logo.vue";
 // import { convertRemToPixels } from "@/utils";
 export default {
   name: "Navigation",
+  components: { PersonalLogo },
   data() {
     return {
       pages: {},
@@ -74,6 +76,8 @@ export default {
   z-index: 1000;
 
   .navlogo {
+    width: auto;
+    min-width: 4em;
     max-height: 2.5rem;
     padding: 2rem 3rem;
     @include anim-h--scale;

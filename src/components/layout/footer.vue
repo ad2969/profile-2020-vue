@@ -14,7 +14,7 @@
       </a>
       <div class="link-spacer"></div>
       <router-link to="/">
-        <img class="link footerlogo" src="@/assets/logo.png" alt="logo" />
+        <PersonalLogo class="link footerlogo" />
       </router-link>
       <div class="link-spacer"></div>
       <a href="https://www.linkedin.com/in/clarence-adrian/" target="_blank">
@@ -36,6 +36,7 @@
 
 <script>
 import GithubLogo from "@/assets/logos/github";
+import PersonalLogo from "@/assets/logo.vue";
 // import InstagramLogo from "@/assets/logos/instagram";
 import LinkedinLogo from "@/assets/logos/linkedin";
 import MailLogo from "@/assets/logos/mail";
@@ -43,7 +44,7 @@ import TwitterLogo from "@/assets/logos/twitter";
 
 export default {
   name: "Footer",
-  components: { GithubLogo, LinkedinLogo, MailLogo, TwitterLogo }
+  components: { PersonalLogo, GithubLogo, LinkedinLogo, MailLogo, TwitterLogo }
 };
 </script>
 
@@ -81,6 +82,9 @@ export default {
     .link,
     .logo {
       margin: 3rem 0;
+    }
+    .link {
+      @include anim-h--scale(1.1);
     }
 
     .link-spacer,
