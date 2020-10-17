@@ -16,7 +16,10 @@
       </router-link>
 
       <!-- Temporary "resume" -->
-      <a class="link t--lc t--non" href="@/assets/clarence-resume.pdf" download
+      <a
+        class="link t--lc t--non"
+        href="https://drive.google.com/file/d/1eT5cDgOwDseLEzERlJJ7jEC1SJy54zGu/view?usp=sharing"
+        target="_blank"
         >resume</a
       >
     </div>
