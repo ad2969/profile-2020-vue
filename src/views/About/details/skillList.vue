@@ -1,31 +1,29 @@
 <template>
-  <div class="column-content">
-    <div
-      v-for="([category, lines], index) in Object.entries(skills)"
-      :key="'category' + index"
-      class="skill-list"
-    >
-      <h4 class="skill-list__title t--c t--hl mb-0">
-        my favourite {{ category }}:
-      </h4>
+  <div
+    v-for="([category, lines], index) in Object.entries(skills)"
+    :key="'category' + index"
+    class="skill-list"
+  >
+    <h4 class="skill-list__title t--c t--hl mb-0">
+      my {{ filtered ? "favourite" : "known" }} {{ category }}:
+    </h4>
 
-      <!-- If language -->
-      <div v-if="category === 'languages'">
-        <p
-          v-for="[language, years] in Object.entries(lines)"
-          :key="language"
-          class="skill-list__line"
-        >
-          {{ language }} {{ "⦿".repeat(years) }}
-        </p>
-      </div>
-
-      <!-- If a list of skills -->
-      <div v-else>
-        <p v-for="skillset in lines" :key="skillset" class="skill-list__line">
-          {{ skillset.join(", ") }}
-        </p>
-      </div>
+    <div>
+      <p v-for="skillset in lines" :key="skillset" class="skill-list__line">
+        {{
+          skillset
+            .reduce((accumulator, skill) => {
+              if (filtered && skill.hide) return accumulator;
+              else
+                return [
+                  ...accumulator,
+                  skill.text +
+                    (skill.years ? " " + "⦿".repeat(skill.years) : "")
+                ];
+            }, [])
+            .join(", ")
+        }}
+      </p>
     </div>
   </div>
 </template>
@@ -34,6 +32,10 @@
 export default {
   name: "skillList",
   props: {
+    filtered: {
+      type: Boolean,
+      default: true
+    },
     skills: {
       type: Object
     }

@@ -2,22 +2,27 @@
   <div class="Page skills">
     <Header bgText="skills" text="what I'm great at and what I'm learning" />
     <div class="table">
-      <div class="column">
+      <div
+        class="column"
+        v-for="(skillCategory, index) in skills"
+        :key="skillCategory.title"
+      >
         <div class="column-title">
-          <DevIcon class="column-title__img" />
-          <h4 class="mt-0 column-title__text">Web and Mobile Development</h4>
+          <component :is="skillCategory.icon" class="column-title__img" />
+          <!-- <DevIcon class="column-title__img" /> -->
+          <h4 class="mt-0 column-title__text">{{ skillCategory.title }}</h4>
         </div>
         <div class="column-content">
-          <SkillList :skills="skills[0]" />
-        </div>
-      </div>
-      <div class="column">
-        <div class="column-title">
-          <ToolsIcon class="column-title__img" />
-          <h4 class="mt-0 column-title__text">Other Skills</h4>
-        </div>
-        <div class="column-content">
-          <SkillList :skills="skills[1]" />
+          <SkillList
+            :skills="skillCategory.skillList"
+            :filtered="filtered[index]"
+          />
+          <h4
+            className="column-more t--hl"
+            @click="filtered[index] = !filtered[index]"
+          >
+            {{ filtered[index] ? "see more..." : "see less..." }}
+          </h4>
         </div>
       </div>
     </div>
@@ -34,44 +39,84 @@ import SkillList from "./details/skillList";
 
 const SKILLS = [
   {
-    languages: {
-      Javascript: 2,
-      Typescript: 2,
-      HTML: 2,
-      "CSS (Sass, Less)": 2,
-      Python: 1
-    },
-    frameworks: [
-      ["React", "React Native", "Vue", "Gatsby.js"],
-      ["AntDesign", "Bootstrap", "MaterialUI", "ThreeJs", "FramerMotion"],
-      ["GraphQL", "Serverless", "Aglio", "Dredd"],
-      ["Mocha", "Chakram"],
-      ["Django"]
-    ],
-    "cloud services": [
-      ["AWS", "GCP (BigQuery)", "Firebase"],
-      ["MongoDB", "PostgreSQL", "Redis"]
-    ],
-    tools: [
-      ["Docker", "TravisCI"],
-      ["Figma", "Framer"],
-      ["Git", "Bash", "Debian", "Kali"]
-    ]
+    title: "Web and Mobile Development",
+    icon: DevIcon,
+    skillList: {
+      languages: [
+        [{ text: "Javascript", years: 2 }],
+        [{ text: "Typescript", years: 2 }],
+        [{ text: "HTML", years: 2, hide: true }],
+        [{ text: "CSS (Sass, Less)", years: 2 }],
+        [{ text: "Python", years: 1 }]
+      ],
+      frameworks: [
+        [
+          { text: "React" },
+          { text: "React Native", hide: true },
+          { text: "Vue" },
+          { text: "Gatsby.js", hide: true }
+        ],
+        [
+          { text: "AntDesign", hide: true },
+          { text: "Bootstrap", hide: true },
+          { text: "MaterialUI", hide: true },
+          { text: "ThreeJs", hide: true },
+          { text: "FramerMotion", hide: true }
+        ],
+        [
+          { text: "GraphQL" },
+          { text: "Serverless" },
+          { text: "Aglio", hide: true },
+          { text: "Dredd", hide: true }
+        ],
+        [
+          { text: "Mocha", hide: true },
+          { text: "Chakram", hide: true }
+        ],
+        [{ text: "Django" }]
+      ],
+      "cloud services": [
+        [{ text: "AWS" }, { text: "GCP (BigQuery)" }, { text: "Firebase" }],
+        [
+          { text: "MongoDB" },
+          { text: "PostgreSQL" },
+          { text: "Redis", hide: true }
+        ]
+      ],
+      tools: [
+        [{ text: "Docker" }, { text: "TravisCI" }],
+        [
+          { text: "Figma", hide: true },
+          { text: "Framer", hide: true }
+        ],
+        [{ text: "Git" }, { text: "Bash" }, { text: "Linux" }]
+      ]
+    }
   },
   {
-    languages: {
-      C: 1,
-      "Embedded-C": 1,
-      "Verilog HDL": 1,
-      ARM: 1,
-      Assembly: 1
-    },
-    software: [
-      ["JIRA", "ZenHub"],
-      ["Notion"],
-      ["Photoshop", "Illustrator"],
-      ["Unity3D", "SOLIDWORKS"]
-    ]
+    title: "Other Skills",
+    icon: ToolsIcon,
+    skillList: {
+      languages: [
+        [{ text: "C", years: 1 }],
+        [{ text: "Embedded-C", years: 1, hide: true }],
+        [{ text: "Verilog HDL", years: 1 }],
+        [{ text: "ARM", years: 1, hide: true }],
+        [{ text: "Assembly", years: 1, hide: true }]
+      ],
+      software: [
+        [{ text: "JIRA" }, { text: "ZenHub" }],
+        [{ text: "Notion" }],
+        [
+          { text: "Photoshop", hide: true },
+          { text: "Illustrator", hide: true }
+        ],
+        [
+          { text: "Unity3D", hide: true },
+          { text: "SOLIDWORKS", hide: true }
+        ]
+      ]
+    }
   }
 ];
 
@@ -85,7 +130,8 @@ export default {
   },
   data() {
     return {
-      skills: SKILLS
+      skills: SKILLS,
+      filtered: new Array(SKILLS.length).fill(true)
     };
   }
 };
@@ -95,7 +141,7 @@ export default {
 .table {
   margin: 0 auto;
   display: flex;
-  border: 1px solid rgba($dark, 0.5);
+  border: 1px solid rgba($dark, 0.1);
   border-radius: 1rem 1rem 0 0;
   flex-direction: column;
   overflow: hidden;
@@ -113,6 +159,14 @@ export default {
         color: $white;
       }
     }
+
+    .column-content {
+      margin: 2rem;
+
+      .column-more {
+        @include anim-h--scale(1.1);
+      }
+    }
   }
 
   @include for-tablet-landscape-up {
@@ -121,7 +175,7 @@ export default {
 
     .column {
       flex: 50%;
-      border: 1px solid rgba($dark, 0.5);
+      border: 1px solid rgba($dark, 0.1);
 
       &:first-child {
         border-radius: 2rem 0 0 0;
@@ -129,10 +183,6 @@ export default {
 
       &:last-child {
         border-radius: 0 2rem 0 0;
-      }
-
-      .column-content {
-        margin: 2rem;
       }
     }
   }
