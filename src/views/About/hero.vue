@@ -116,10 +116,6 @@ export default {
 
   .hero-text {
     text-align: left;
-
-    .hero-text__description {
-      min-height: 14rem;
-    }
   }
 
   .hero-img {
@@ -139,14 +135,14 @@ export default {
 
   @include for-tablet-portrait-up {
     .hero-text {
-      flex: 50%;
-      max-width: 45%;
+      flex: 70%;
+      max-width: 65%;
       padding-right: 5%;
     }
 
     .hero-img {
-      flex: 50%;
-      max-width: 50%;
+      flex: 40%;
+      max-width: 40%;
       position: relative;
       margin: 10% 0 10% 10%;
     }

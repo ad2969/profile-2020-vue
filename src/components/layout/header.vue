@@ -29,12 +29,12 @@ export default {
 <style scoped lang="scss">
 .header-text {
   position: relative;
+  margin-bottom: 4rem;
 
   .header-text-background {
     max-width: 100%;
     opacity: 0.2;
-    margin-top: 0;
-    margin-bottom: 2rem;
+    margin: 0;
     user-select: none;
     @include text-shadow-glow($dark, 2s);
   }
@@ -43,14 +43,12 @@ export default {
     text-align: center;
     width: 100%;
     margin: 0;
-    top: 4rem;
+    top: 3rem;
     line-height: 3rem;
   }
 
   @include for-phone-only {
-    .header-text-background {
-      margin-bottom: 4rem;
-    }
+    margin-bottom: 6rem;
   }
 }
 </style>

@@ -31,11 +31,11 @@ html {
   }
 
   @include for-desktop-up {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   @include for-big-desktop-up {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
