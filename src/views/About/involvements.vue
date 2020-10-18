@@ -3,17 +3,20 @@
     <Header bgText="orgs" text="the organizations I've joined" />
     <div class="involvement-list">
       <div v-for="inv in involvements" :key="inv.organization" class="inv">
-        <!-- <img class="inv__bg" :src="inv.image" /> -->
         <div
           class="inv__bg"
           :style="{ backgroundImage: `url(${inv.image})` }"
         ></div>
-        <a tag="div" :href="inv.link" target="_blank" class="inv-content">
+        <a
+          tag="div"
+          :href="inv.link"
+          target="_blank"
+          class="inv-content t--non"
+        >
           <img class="inv__icon" :src="inv.icon" />
-          <p class="inv__title t--non">{{ inv.organization }}</p>
+          <p class="inv__title">{{ inv.organization }}</p>
+          <p class="inv__position">{{ inv.position }}</p>
         </a>
-        <!-- <div class="inv__content">
-        </div> -->
       </div>
     </div>
   </div>
@@ -35,13 +38,15 @@ const INVOLVEMENTS = [
     organization: "UBC Biztech",
     icon: BiztechLogo,
     image: BiztechImage,
-    link: "https://www.ubcbiztech.com/"
+    link: "https://www.ubcbiztech.com/",
+    position: "Developer"
   },
   {
     organization: "Code the Change Foundation",
     icon: CtcLogo,
     image: CtcImage,
-    link: "http://codethechange.ca/"
+    link: "http://codethechange.ca/",
+    position: "Mobile Developer"
   },
   {
     organization: "UBC Turing Club",
@@ -73,7 +78,7 @@ export default {
 <style scoped lang="scss">
 .involvement-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, calc(50% - 2rem));
+  grid-template-columns: repeat(auto-fill, 100%);
   grid-gap: 2rem;
   // max-width: 600px;
   margin: 0 auto;
@@ -109,7 +114,6 @@ export default {
       position: absolute;
       height: 100%;
       width: 100%;
-      max-width: 40vw;
       z-index: 1;
 
       &:before {
@@ -140,12 +144,19 @@ export default {
         max-height: 40%;
       }
 
-      .inv__title {
+      .inv__title,
+      .inv__position {
         font-size: 1.5rem;
         line-height: 2rem;
         color: $black;
         max-width: 80%;
         margin: 0.5em 0 0 0;
+      }
+      .inv__title {
+        text-decoration: underline;
+      }
+      .inv__position {
+        color: rgba($black, 0.5);
       }
     }
 
