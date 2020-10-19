@@ -1,17 +1,25 @@
 <template>
-  <Navigation />
-  <router-view />
-  <Footer />
+  <LoaderProvider>
+    <Navigation />
+    <Layout>
+      <router-view />
+    </Layout>
+    <Footer />
+  </LoaderProvider>
 </template>
 
 <script>
+import LoaderProvider from "@/context/LoaderProvider";
 import Navigation from "@/components/layout/navigation";
 import Footer from "@/components/layout/footer";
+import Layout from "@/components/layout/index";
 export default {
   name: "App",
   components: {
+    LoaderProvider,
     Navigation,
-    Footer
+    Footer,
+    Layout
   }
 };
 </script>
@@ -50,9 +58,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: black;
-
-  margin: 0;
-  max-width: 2500px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
 
   @media (min-width: 1500px) {
     margin: 0 auto;

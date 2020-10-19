@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <div class="About">
     <AboutHero />
     <Divider />
     <AboutWork />
@@ -8,7 +8,7 @@
     <Divider />
     <AboutInvolvements />
     <Divider />
-  </Layout>
+  </div>
 </template>
 
 <script>
@@ -16,13 +16,11 @@ import AboutHero from "./hero";
 import AboutWork from "./work";
 import AboutSkills from "./skills";
 import AboutInvolvements from "./involvements";
-import Layout from "@/components/layout/index";
 import Divider from "@/components/layout/divider";
 
 export default {
   name: "About",
   components: {
-    Layout,
     Divider,
     AboutHero,
     AboutWork,
@@ -35,4 +33,9 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.About {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+</style>

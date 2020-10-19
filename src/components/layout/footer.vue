@@ -27,9 +27,12 @@
     </div>
     <h4 class="footer-text">
       <!-- Vancouver, Jakarta -->
-      (the website is a WIP)
+      2020 © Designed and built by Clarence Adrian
       <br />
-      2020 © designed and built by Clarence Adrian
+      Hosted on netlify.com
+      <br />
+      <br />
+      (the website is a WIP)
     </h4>
   </div>
 </template>

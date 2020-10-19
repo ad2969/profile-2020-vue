@@ -5,6 +5,7 @@
       <div v-for="inv in involvements" :key="inv.organization" class="inv">
         <div
           class="inv__bg"
+          :class="{ 'inv__bg--grayscale': inv.inactive }"
           :style="{ backgroundImage: `url(${inv.image})` }"
         ></div>
         <a
@@ -49,16 +50,17 @@ const INVOLVEMENTS = [
     position: "Mobile Developer"
   },
   {
-    organization: "UBC Turing Club",
-    icon: TuringLogo,
-    image: TuringImage,
-    link: "https://turing-club.github.io/"
-  },
-  {
     organization: "Alpha Kappa Psi Business Fraternity",
     icon: AkpsiLogo,
     image: AkpsiImage,
     link: "http://www.akpsiubc.com/"
+  },
+  {
+    organization: "UBC Turing Club",
+    icon: TuringLogo,
+    image: TuringImage,
+    link: "https://turing-club.github.io/",
+    inactive: true
   }
 ];
 
@@ -82,13 +84,14 @@ export default {
   grid-gap: 2rem;
   // max-width: 600px;
   margin: 0 auto;
+  justify-content: center;
 
   @include for-tablet-portrait-up {
     width: 80%;
     grid-template-columns: repeat(auto-fill, calc(50% - 2rem));
   }
 
-  @include for-big-desktop-up {
+  @include for-desktop-up {
     // maximum number of organizations (100/num)
     grid-template-columns: repeat(auto-fill, calc(33% - 2rem));
   }
@@ -125,6 +128,12 @@ export default {
         left: 0;
         z-index: 2;
         background: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .inv__bg.inv__bg--grayscale {
+      filter: grayscale(100%);
+      &:before {
+        background: rgba(0, 0, 0, 0.75);
       }
     }
 

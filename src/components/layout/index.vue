@@ -12,12 +12,6 @@ export default {
 
 <style scoped lang="scss">
 .Layout {
-  margin-left: 15%;
-  margin-right: 15%;
-
-  // @include for-desktop-up {
-  //   margin-left: 15%;
-  //   margin-right: 15%;
-  // }
+  max-width: 1750px; // 70% of 2500px
 }
 </style>
