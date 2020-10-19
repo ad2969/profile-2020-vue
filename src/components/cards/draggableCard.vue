@@ -9,7 +9,7 @@
       transform: cardStyle
     }"
   >
-    <img :src="image" alt="face" class="card-draggable__img" />
+    <img :src="image" alt="face" class="card-draggable__img t--non" />
   </div>
 </template>
 

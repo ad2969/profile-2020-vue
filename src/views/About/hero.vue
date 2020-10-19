@@ -17,6 +17,7 @@
     </div>
     <HeroCardList
       class="hero-img"
+      :class="{ shake: !touched }"
       :images="positions.map(p => ({ ...p.image, title: p.title }))"
       :currentTitle="currentData.title"
       :originalTitleOrder="originalTitleOrder"
@@ -91,11 +92,13 @@ export default {
     return {
       originalTitleOrder: POSITIONS.map(p => p.title),
       positions: POSITIONS,
-      currentData: POSITIONS[0]
+      currentData: POSITIONS[0],
+      touched: false
     };
   },
   methods: {
     handleCardSwiped() {
+      this.touched = true;
       const removedPosition = this.positions.shift();
       this.positions.push(removedPosition);
     },
@@ -124,12 +127,17 @@ export default {
     @include flex-row;
     align-items: center;
     justify-content: center;
-    @include box-shadow-glow($dark);
 
     &:after {
       content: "";
       display: block;
       padding-bottom: 100%;
+      width: 100%;
+      @include box-shadow-glow($dark);
+    }
+
+    &.shake {
+      @include shake;
     }
   }
 
