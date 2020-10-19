@@ -17,8 +17,8 @@ export default {
     };
   },
   methods: {
-    toggleLoading() {
-      this.isLoading = !this.isLoading;
+    toggleLoading(trigger = !this.isLoading) {
+      this.isLoading = trigger;
     }
   },
   provide() {

@@ -29,6 +29,12 @@ export default {
   },
   data() {
     return {};
+  },
+  inject: ["toggleLoading", "isLoading"],
+  mounted() {
+    setTimeout(() => {
+      this.toggleLoading(false);
+    }, 2000);
   }
 };
 </script>

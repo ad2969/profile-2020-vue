@@ -24,14 +24,14 @@ $loader-size: 3rem;
 
 // styles
 .loader-box {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   z-index: 9999;
   background: $black;
-  transform: translateY(-100%);
+  transform: translateY(100%);
   transition: all 0.5s;
 
   &.active {
@@ -60,9 +60,9 @@ $loader-size: 3rem;
     height: $loader-size;
     width: $loader-size;
     animation-play-state: paused;
-    animation: circlebounce-transform 0.5s infinite alternate
+    animation: circlebounce-transform 0.4s infinite alternate
         cubic-bezier(0.18, 0.02, 0.3, 0.99),
-      circlebounce-scale 0.5s infinite alternate
+      circlebounce-scale 0.4s infinite alternate
         cubic-bezier(0.18, 0.02, 0.3, 0.99);
   }
   .loader__square {
@@ -70,9 +70,9 @@ $loader-size: 3rem;
     height: 1.3 * $loader-size;
     width: 1.3 * $loader-size;
     animation-play-state: paused;
-    animation: squarebounce-transform 1s infinite
+    animation: squarebounce-transform 0.8s infinite
         cubic-bezier(0.7, 0.14, 0.3, 0.94),
-      squarebounce-scale 1s infinite cubic-bezier(0.7, 0.14, 0.3, 0.94);
+      squarebounce-scale 0.8s infinite cubic-bezier(0.7, 0.14, 0.3, 0.94);
   }
 }
 .loader.active {
