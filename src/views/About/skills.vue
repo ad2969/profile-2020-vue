@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <p>⦿ - years of experience</p>
+    <p>⦿ - years of active experience</p>
   </div>
 </template>
 
@@ -46,7 +46,7 @@ const SKILLS = [
         [{ text: "Javascript", years: 2 }],
         [{ text: "Typescript", years: 2 }],
         [{ text: "HTML", years: 2, hide: true }],
-        [{ text: "CSS (Sass, Less)", years: 2 }],
+        [{ text: "CSS (Sass, Less)", years: 2, hide: true }],
         [{ text: "Python", years: 1 }]
       ],
       frameworks: [
