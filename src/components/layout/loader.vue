@@ -32,11 +32,11 @@ $loader-size: 3rem;
   z-index: 9999;
   background: $black;
   transform: translateY(100%);
-  transition: all 0.5s;
+  transition: transform 0.5s;
 
   &.active {
     transform: translateY(0);
-    transition: all 0.5s;
+    transition: transform 0.5s;
   }
 }
 
