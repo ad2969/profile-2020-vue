@@ -17,7 +17,7 @@ export default {
 .hero {
   margin-left: 15%;
   margin-right: 15%;
-  min-height: 600px;
-  height: 100%;
+  max-height: 2500px;
+  height: calc(100vh - 6.5rem);
 }
 </style>

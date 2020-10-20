@@ -8,10 +8,8 @@
           {{ details.date }}<br />
         </h3>
         <div class="content__project">
-          <h3>
-            {{ details.outcome }}<br />
-            {{ details.technologies }}<br />
-          </h3>
+          <h3>{{ details.outcome }}</h3>
+          <h4>{{ details.technologies }}</h4>
         </div>
       </div>
     </span>
@@ -36,12 +34,11 @@ export default {
   width: 100vw;
 
   @include descending-z-index(20);
+  @extend .Page--tall;
 }
 .hexadown {
   position: relative;
-  padding-top: 50%;
   width: 100%;
-  max-height: 50%;
   box-shadow: 0 0 5rem rgba(0, 0, 0, 0.75);
 
   /* cover up extra shadows */
@@ -50,13 +47,13 @@ export default {
     position: absolute;
     top: 0px;
     left: 0;
-    width: 100%;
-    height: 100%;
     z-index: 2;
     background: inherit;
+    width: 100%;
+    height: 100%;
   }
 
-  &:before {
+  &:after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -72,23 +69,49 @@ export default {
 
 .hexadown-content {
   .portfolio-content {
-    height: 80%;
+    height: 70%;
     margin: 10% 15%;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    max-width: 35%;
 
     .content__logo {
       max-height: 10rem;
       margin-bottom: 2rem;
+      align-self: flex-start;
     }
 
     .content__position {
-      border-left: 1rem solid;
-      padding-left: 3rem;
+      border-left: 0.5rem solid;
+      padding-left: 2rem;
     }
 
     .content__project {
-      height: 100%;
-      align-content: flex-end;
+      margin-top: auto;
+    }
+  }
+}
+
+// shifting sides
+.hexadown {
+  &:nth-child(odd) {
+    .hexadown-content {
+      .portfolio-content {
+        float: right;
+        text-align: right;
+
+        .content__logo {
+          align-self: flex-end;
+        }
+
+        .content__position {
+          border-left: none;
+          padding-left: 0;
+          padding-right: 2rem;
+          border-right: 0.5rem solid;
+        }
+      }
     }
   }
 }

@@ -25,7 +25,7 @@ export default {
 .further {
   margin-left: 15%;
   margin-right: 15%;
-  min-height: calc(100vh - 6.5rem);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
