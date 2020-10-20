@@ -5,11 +5,11 @@ export const pages = [
   {
     path: "/",
     name: "About"
+  },
+  {
+    path: "/portfolio",
+    name: "Portfolio"
   }
-  // {
-  //   path: "/portfolio",
-  //   name: "Portfolio"
-  // },
   // {
   //   path: "/projects",
   //   name: "Projects"

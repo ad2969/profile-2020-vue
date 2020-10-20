@@ -12,6 +12,7 @@ export default {
 
 <style scoped lang="scss">
 .Layout {
+  min-height: 75vh;
   max-width: 1750px; // 70% of 2500px
 }
 </style>
