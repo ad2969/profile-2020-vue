@@ -17,7 +17,6 @@
         <span class="t--hl t--b">{{ currentData.title }}</span>
         <a
           :class="{ 'work-link': currentData.link }"
-          class="t--non"
           :href="currentData.link"
           target="_blank"
           >&nbsp;@&nbsp;{{ currentData.company }}</a
@@ -49,8 +48,7 @@ const JOBS = {
     date: "January to December 2020",
     location: "Vancouver, BC",
     description:
-      "Diving into my first real job experience, I was hired by SemiosBIO to assist with the development of their customer & internal applications, which receive, evaluate, and display over 400M pieces of data from field devices daily. This is where I picked up most of my knowledge in web application development.",
-    // markRaw prevents it from being "reactive"
+      "Diving into my first real job experience, I was hired by SemiosBIO as a Co-Op Intern to assist with the development of their customer & internal web applications. As part of the customer applications team, I worked with a team of developers and project managers to develop tools that receive, evaluate, and display data on agricutlure IoT devices in farms across the US & Canada. As part of the internal applications team, I helped develop the tools that help Semios technicians keep track of our field devices and inventory. My experience with Semios is where I picked up most of my knowledge surrounding web application development.",
     skills: [
       "responsive web development",
       "Internet of Things",
@@ -67,7 +65,6 @@ const JOBS = {
     location: "Anywhere!",
     description:
       "My future is currently open to opportunities. I've recently developed an interest in product/project management, in the hopes of pursuing a career in technical project management/technology consulting. If you know an opportunity and think I will be a good fit, feel free to contact me!",
-    // markRaw prevents it from being "reactive"
     skills: [],
     image: QuestionMark
   }
@@ -102,6 +99,9 @@ export default {
 
     .work-title {
       .work-link {
+        font-weight: bold;
+        text-decoration: none;
+        color: $black;
         @include anim-h--opacity;
       }
     }

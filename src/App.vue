@@ -12,7 +12,7 @@
 import LoaderProvider from "@/context/LoaderProvider";
 import Navigation from "@/components/layout/navigation";
 import Footer from "@/components/layout/footer";
-import Layout from "@/components/layout/index";
+import Layout from "@/components/layout/layout";
 export default {
   name: "App",
   components: {

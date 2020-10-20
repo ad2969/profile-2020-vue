@@ -115,10 +115,7 @@ export default {
 <style scoped lang="scss">
 .hero {
   @include flex-row;
-
-  &.Page {
-    min-height: 600px;
-  }
+  min-height: 600px;
 
   .hero-text {
     text-align: left;
