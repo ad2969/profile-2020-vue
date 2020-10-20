@@ -14,5 +14,6 @@ export default {
 .Layout {
   min-height: 75vh;
   max-width: 1750px; // 70% of 2500px
+  width: 100%;
 }
 </style>

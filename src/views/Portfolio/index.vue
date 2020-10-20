@@ -67,6 +67,6 @@ export default {
 
 <style scoped lang="scss">
 .Portfolio {
-  width: 100vw;
+  width: 100%;
 }
 </style>

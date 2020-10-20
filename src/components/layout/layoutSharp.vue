@@ -39,7 +39,9 @@ export default {
 }
 .hexadown {
   position: relative;
-  height: 50vw;
+  padding-top: 50%;
+  width: 100%;
+  max-height: 50%;
   box-shadow: 0 0 5rem rgba(0, 0, 0, 0.75);
 
   /* cover up extra shadows */
@@ -58,12 +60,12 @@ export default {
     content: "";
     position: absolute;
     z-index: 1;
-    width: 71vw;
-    height: 71vw;
+    width: 70.7%;
+    padding-top: 70.7%;
     transform: scaleY(0.15) rotate(-45deg);
     background-color: inherit;
-    left: 14.5%;
-    bottom: -71%;
+    left: 14.6%;
+    bottom: -69.5%;
     box-shadow: 0 0 25rem rgba(0, 0, 0, 0.75);
   }
 }
