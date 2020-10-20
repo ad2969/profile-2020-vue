@@ -5,7 +5,7 @@
       <div v-for="inv in involvements" :key="inv.organization" class="inv">
         <div
           class="inv__bg"
-          :class="{ 'inv__bg--grayscale': inv.inactive }"
+          :class="{ 'inv--grayscale': inv.inactive }"
           :style="{ backgroundImage: `url(${inv.image})` }"
         ></div>
         <a
@@ -14,9 +14,15 @@
           target="_blank"
           class="inv-content t--non"
         >
-          <img class="inv__icon" :src="inv.icon" />
+          <img
+            class="inv__icon"
+            :class="{ 'inv--grayscale': inv.inactive }"
+            :src="inv.icon"
+          />
           <p class="inv__title">{{ inv.organization }}</p>
-          <p class="inv__position">{{ inv.position }}</p>
+          <p class="inv__position">
+            {{ inv.position }} {{ inv.inactive ? "(INACTIVE)" : "" }}
+          </p>
         </a>
       </div>
     </div>
@@ -28,11 +34,9 @@ import Header from "@/components/layout/header";
 import AkpsiLogo from "@/assets/logos/akpsi.png";
 import BiztechLogo from "@/assets/logos/biztech.png";
 import CtcLogo from "@/assets/logos/ctc.png";
-import TuringLogo from "@/assets/logos/turing.png";
 import AkpsiImage from "@/assets/images/akpsi-img.png";
 import BiztechImage from "@/assets/images/biztech-img.png";
 import CtcImage from "@/assets/images/ctc-img.jpg";
-import TuringImage from "@/assets/images/turing-img.jpg";
 
 const INVOLVEMENTS = [
   {
@@ -43,23 +47,17 @@ const INVOLVEMENTS = [
     position: "Developer"
   },
   {
-    organization: "Code the Change Foundation",
-    icon: CtcLogo,
-    image: CtcImage,
-    link: "http://codethechange.ca/",
-    position: "Mobile Developer"
-  },
-  {
     organization: "Alpha Kappa Psi Business Fraternity",
     icon: AkpsiLogo,
     image: AkpsiImage,
     link: "http://www.akpsiubc.com/"
   },
   {
-    organization: "UBC Turing Club",
-    icon: TuringLogo,
-    image: TuringImage,
-    link: "https://turing-club.github.io/",
+    organization: "Code the Change Foundation",
+    icon: CtcLogo,
+    image: CtcImage,
+    link: "http://codethechange.ca/",
+    position: "Mobile Developer",
     inactive: true
   }
 ];
@@ -130,10 +128,10 @@ export default {
         background: rgba(0, 0, 0, 0.5);
       }
     }
-    .inv__bg.inv__bg--grayscale {
-      filter: grayscale(100%);
+    .inv--grayscale {
+      filter: contrast(75%) grayscale(100%);
       &:before {
-        background: rgba(0, 0, 0, 0.75);
+        background: rgba($dark, 0.75);
       }
     }
 

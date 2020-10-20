@@ -38,7 +38,10 @@ const POSITIONS = [
     article: "a",
     title: "Software Developer",
     description: [
-      { text: "I enjoy creating products that have a", coloured: false },
+      {
+        text: "I am passionate about building applications that have a",
+        coloured: false
+      },
       { text: "positive impact", coloured: true },
       { text: "on the people around me.", coloured: false }
     ],
@@ -69,7 +72,7 @@ const POSITIONS = [
     description: [
       {
         text:
-          "I enjoy tinkering with technology and understand the importance of",
+          "I love tinkering with technology and understand the importance of",
         coloured: false
       },
       { text: "engineering practices", coloured: true },
