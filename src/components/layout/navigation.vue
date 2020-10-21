@@ -15,6 +15,13 @@
         {{ page.name }}
       </router-link>
 
+      <!-- Temporary "schedule" -->
+      <a
+        class="link t--lc t--non"
+        href="https://calendar.google.com/calendar/u/0/embed?src=clarence.ad29@gmail.com&ctz=America/Vancouver"
+        target="_blank"
+        >schedule</a
+      >
       <!-- Temporary "resume" -->
       <a
         class="link t--lc t--non"

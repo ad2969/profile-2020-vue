@@ -137,7 +137,7 @@ export default {
     }
 
     &.shake {
-      @include shake;
+      // need good shake anims here
     }
   }
 
