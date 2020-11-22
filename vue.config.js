@@ -21,7 +21,7 @@ module.exports = {
       .use("file-loader")
       .loader("file-loader")
       .options({
-        name: "assets/pdf/[name].[hash:8].[ext]"
+        name: "assets/[name].[ext]"
       });
   }
 };
