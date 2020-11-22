@@ -21,6 +21,13 @@ export default {
       this.isLoading = trigger;
     }
   },
+  watch: {
+    $route(to) {
+      if (this.isLoading && to.fullPath.includes("assets")) {
+        this.toggleLoading();
+      }
+    }
+  },
   provide() {
     return {
       toggleLoading: this.toggleLoading,

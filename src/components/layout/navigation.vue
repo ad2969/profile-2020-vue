@@ -23,12 +23,7 @@
         >schedule</a
       >
       <!-- Temporary "resume" -->
-      <a
-        class="link t--lc t--non"
-        href="https://drive.google.com/file/d/1eT5cDgOwDseLEzERlJJ7jEC1SJy54zGu/view?usp=sharing"
-        target="_blank"
-        >resume</a
-      >
+      <a class="link t--lc t--non" :href="resume" target="_blank">resume</a>
     </div>
   </div>
 
@@ -38,6 +33,7 @@
 <script>
 import { pages } from "@/router";
 import PersonalLogo from "@/assets/logo.vue";
+import resume from "@/assets/resume.pdf";
 // import { convertRemToPixels } from "@/utils";
 export default {
   name: "Navigation",
@@ -46,7 +42,8 @@ export default {
     return {
       pages: {},
       atTop: true,
-      navPopup: false
+      navPopup: false,
+      resume
     };
   },
   mounted() {
