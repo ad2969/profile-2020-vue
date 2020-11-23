@@ -37,6 +37,15 @@ const routes = [
   })),
   // set page for routes that are not found
   {
+    path: "/schedule",
+    beforeEnter() {
+      setTimeout(() => {
+        window.location =
+          "https://calendar.google.com/calendar/u/0/embed?src=clarence.ad29@gmail.com&ctz=America/Vancouver&mode=WEEK&title=Clarence's%20Schedule";
+      }, 1000);
+    }
+  },
+  {
     path: "/:pathMatch(.*)",
     component: NotFound
   }
