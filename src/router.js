@@ -35,7 +35,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(`./views/${page.name}`)
   })),
-  // set page for routes that are not found
+  // asset files and re-routes
   {
     path: "/schedule",
     beforeEnter() {
@@ -45,6 +45,15 @@ const routes = [
       }, 1000);
     }
   },
+  {
+    path: "/resume",
+    beforeEnter() {
+      setTimeout(() => {
+        window.location = `${window.location.origin}/assets/resume.pdf`;
+      }, 1000);
+    }
+  },
+  // set page for routes that are not found
   {
     path: "/:pathMatch(.*)",
     component: NotFound
